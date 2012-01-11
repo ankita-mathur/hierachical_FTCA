@@ -11,10 +11,21 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTree;
+import javax.swing.DefaultComboBoxModel;
 
 public class MainGUI extends JFrame {
-
-	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -36,20 +47,57 @@ public class MainGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainGUI() {
+		setTitle("Web Snippet Clusterer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(4, 0, 0, 0));
+		setBounds(100, 100, 1024,720 );
+		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 		
-		JButton btnGetData = new JButton("Get Data");
-		btnGetData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showInternalMessageDialog(contentPane, "Hello World");
-			}
-		});
-		contentPane.add(btnGetData);
+		JPanel panel = new JPanel();
+		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		getContentPane().add(panel);
+		panel.setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("50dlu:grow"),
+				ColumnSpec.decode("50dlu:grow"),
+				ColumnSpec.decode("50dlu:grow"),
+				ColumnSpec.decode("50dlu"),
+				FormFactory.RELATED_GAP_COLSPEC,},
+			new RowSpec[] {
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),}));
+		
+		textField = new JTextField();
+		panel.add(textField, "1, 1, 3, 1, fill, default");
+		textField.setColumns(10);
+		
+		JButton btnSearch = new JButton("Search");
+		panel.add(btnSearch, "4, 1");
+		
+		JLabel lblResultCount = new JLabel("Result Count");
+		panel.add(lblResultCount, "1, 3, center, default");
+		
+		JComboBox cmbResultCpunt = new JComboBox();
+		cmbResultCpunt.setModel(new DefaultComboBoxModel(new String[] {"20", "50", "100"}));
+		panel.add(cmbResultCpunt, "2, 3, fill, default");
+		
+		JLabel lblAlgorithm = new JLabel("Algorithm");
+		panel.add(lblAlgorithm, "3, 3, center, default");
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"HAC", "STC", "Lingo", "TCA", "FTCA", "HTCA", "HFTCA"}));
+		panel.add(comboBox, "4, 3, fill, default");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		panel.add(scrollPane, "1, 5, default, fill");
+		
+		JTree tree = new JTree();
+		scrollPane.setViewportView(tree);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
 	}
 
 }
