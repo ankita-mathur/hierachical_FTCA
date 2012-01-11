@@ -25,7 +25,7 @@ import javax.swing.JTree;
 import javax.swing.DefaultComboBoxModel;
 
 public class MainGUI extends JFrame {
-	private JTextField textField;
+	private JTextField txtQuery;
 
 	/**
 	 * Launch the application.
@@ -68,9 +68,9 @@ public class MainGUI extends JFrame {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		textField = new JTextField();
-		panel.add(textField, "1, 1, 3, 1, fill, default");
-		textField.setColumns(10);
+		txtQuery = new JTextField();
+		panel.add(txtQuery, "1, 1, 3, 1, fill, default");
+		txtQuery.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search");
 		panel.add(btnSearch, "4, 1");
@@ -85,9 +85,9 @@ public class MainGUI extends JFrame {
 		JLabel lblAlgorithm = new JLabel("Algorithm");
 		panel.add(lblAlgorithm, "3, 3, center, default");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"HAC", "STC", "Lingo", "TCA", "FTCA", "HTCA", "HFTCA"}));
-		panel.add(comboBox, "4, 3, fill, default");
+		JComboBox cmbAlgo = new JComboBox();
+		cmbAlgo.setModel(new DefaultComboBoxModel(new String[] {"HAC", "STC", "Lingo", "TCA", "FTCA", "HTCA", "HFTCA"}));
+		panel.add(cmbAlgo, "4, 3, fill, default");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane, "1, 5, default, fill");
@@ -98,6 +98,7 @@ public class MainGUI extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
+		
 	}
 
 }
