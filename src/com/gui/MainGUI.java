@@ -13,6 +13,11 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.factories.FormFactory;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -95,6 +100,29 @@ public class MainGUI extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
+		try{
+		ImageIcon google=new ImageIcon("images/google.ico");
+		JComponent googlePanel=new JPanel();
+		
+		JEditorPane googleEditor=new JEditorPane();
+		googleEditor.setEditable(false);
+		googlePanel.setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,ColumnSpec.decode("50dlu:grow"),FormFactory.RELATED_GAP_COLSPEC},
+			new RowSpec[] {
+				
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				}) );
+		googlePanel.add(googleEditor,"2,2,fill,fill");
+		tabbedPane.addTab("Google",google,googlePanel,"Show results from google search engine");
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showMessageDialog(panel, e.getMessage(), "Web Snippet Clustering", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		
 		
 	}
 
