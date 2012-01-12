@@ -101,7 +101,7 @@ public class MainGUI extends JFrame {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
 		try{
-		ImageIcon google=new ImageIcon("images/google.ico");
+		ImageIcon google=new ImageIcon("../../images/google.ico");
 		JComponent googlePanel=new JPanel();
 		
 		JEditorPane googleEditor=new JEditorPane();
