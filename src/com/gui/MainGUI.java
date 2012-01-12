@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+
 import javax.swing.BoxLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTree;
 import javax.swing.DefaultComboBoxModel;
+
 
 public class MainGUI extends JFrame {
 	private JTextField txtQuery;
@@ -98,8 +99,7 @@ public class MainGUI extends JFrame {
 		scrollPane.setViewportView(tree);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
+	
 		try{
 		JComponent googlePanel=new JPanel();
 		JComponent yahooPanel=new JPanel();
@@ -136,12 +136,17 @@ public class MainGUI extends JFrame {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				}) );
 		bingPanel.add(bingEditor,"2,2,fill,fill");
-		tabbedPane.addTab("Google",new ImageIcon(MainGUI.class.getResource("/resources/images/google.ico")),googlePanel,"Show results from google search engine");
-		tabbedPane.addTab("Yahoo",new ImageIcon(MainGUI.class.getResource("/resources/images/yahoo.ico")),googlePanel,"Show results from Yahoo! search engine");
-		tabbedPane.addTab("Bing",new ImageIcon(MainGUI.class.getResource("/resources/images/bing.ico")),googlePanel,"Show results from Bing search engine");
+		ImageIcon g=new ImageIcon(MainGUI.class.getResource("/resources/images/google.ico"));
+		tabbedPane.addTab("Google",g,googlePanel,"Show results from google search engine");
+		tabbedPane.addTab("Yahoo",new ImageIcon(MainGUI.class.getResource("/resources/images/yahoo.ico")),yahooPanel,"Show results from Yahoo! search engine");
+		tabbedPane.addTab("Bing",new ImageIcon(MainGUI.class.getResource("/resources/images/bing.ico")),bingPanel,"Show results from Bing search engine");
+		
+		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(panel, e.getMessage(), "Web Snippet Clustering", JOptionPane.ERROR_MESSAGE);
 		}
 		
