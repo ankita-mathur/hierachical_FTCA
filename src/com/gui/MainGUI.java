@@ -101,11 +101,15 @@ public class MainGUI extends JFrame {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
 		try{
-		ImageIcon google=new ImageIcon("../../images/google.ico");
 		JComponent googlePanel=new JPanel();
-		
+		JComponent yahooPanel=new JPanel();
+		JComponent bingPanel=new JPanel();
 		JEditorPane googleEditor=new JEditorPane();
+		JEditorPane yahooEditor=new JEditorPane();
+		JEditorPane bingEditor=new JEditorPane();
 		googleEditor.setEditable(false);
+		yahooEditor.setEditable(false);
+		bingEditor.setEditable(false);
 		googlePanel.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,ColumnSpec.decode("50dlu:grow"),FormFactory.RELATED_GAP_COLSPEC},
 			new RowSpec[] {
@@ -115,7 +119,26 @@ public class MainGUI extends JFrame {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				}) );
 		googlePanel.add(googleEditor,"2,2,fill,fill");
-		tabbedPane.addTab("Google",google,googlePanel,"Show results from google search engine");
+		yahooPanel.setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,ColumnSpec.decode("50dlu:grow"),FormFactory.RELATED_GAP_COLSPEC},
+			new RowSpec[] {
+				
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				}) );
+		yahooPanel.add(yahooEditor,"2,2,fill,fill");
+		bingPanel.setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,ColumnSpec.decode("50dlu:grow"),FormFactory.RELATED_GAP_COLSPEC},
+			new RowSpec[] {				
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				}) );
+		bingPanel.add(bingEditor,"2,2,fill,fill");
+		tabbedPane.addTab("Google",new ImageIcon(MainGUI.class.getResource("/resources/images/google.ico")),googlePanel,"Show results from google search engine");
+		tabbedPane.addTab("Yahoo",new ImageIcon(MainGUI.class.getResource("/resources/images/yahoo.ico")),googlePanel,"Show results from Yahoo! search engine");
+		tabbedPane.addTab("Bing",new ImageIcon(MainGUI.class.getResource("/resources/images/bing.ico")),googlePanel,"Show results from Bing search engine");
 		}
 		catch(Exception e)
 		{
