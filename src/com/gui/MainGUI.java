@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTree;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Toolkit;
 
 
 public class MainGUI extends JFrame {
@@ -50,6 +51,7 @@ public class MainGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MainGUI() {
+		
 		setTitle("Web Snippet Clusterer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024,720 );
@@ -143,6 +145,7 @@ public class MainGUI extends JFrame {
 		
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel.add(tabbedPane, "2, 5, 3, 1, fill, fill");
+		
 		}
 		catch(Exception e)
 		{
